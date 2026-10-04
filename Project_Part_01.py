@@ -1,3 +1,43 @@
+# ============================================================
+# CODESYNC — PART 1: GITHUB API INTEGRATION
+# ============================================================
+#
+# Goal:
+# The purpose of Part 1 is to establish communication between
+# CodeSync and the GitHub REST API.
+#
+# Before implementing the main project functionality, I first
+# created a separate API sandbox to independently research and
+# practice REST API requests, JSON parsing, response handling,
+# and HTTP error handling.
+#
+# After understanding and testing those concepts in the
+# sandbox, I applied them here to the actual CodeSync project.
+#
+# Part 1 currently allows the user to provide a GitHub
+# repository owner and repository name, then retrieves and
+# displays basic repository information through the GitHub API.
+#
+# Concepts applied:
+# - Python functions
+# - User input
+# - REST API / HTTP GET requests
+# - requests library
+# - JSON response parsing
+# - Dictionary and nested dictionary data extraction
+# - HTTP error handling
+# - Exception handling
+# - Ternary operator
+#
+# Future parts will build on this foundation to implement
+# GitHub file creation, updating, authentication, and the
+# complete CodeSync synchronization workflow.
+# ============================================================
+
+
+
+
+
 import requests
 from requests.exceptions import HTTPError
 
