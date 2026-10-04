@@ -1,9 +1,21 @@
 # ============================================================
-# SANDBOX 01 — GitHub API Research & Concept Practice
+# SANDBOX 01 — GITHUB API RESEARCH & PRACTICE
 # ============================================================
-# This sandbox was written before implementing the main
-# CodeSync Part 1 functionality to independently practice
-# GitHub REST API requests, JSON parsing, and error handling.
+#
+# This sandbox was created before implementing the main
+# CodeSync functionality.
+#
+# The purpose was to independently research and practice:
+# - REST API requests
+# - requests library
+# - JSON parsing
+# - HTTP status handling
+# - raise_for_status()
+# - Exception handling
+# - Extracting data from API responses
+#
+# After testing and understanding these concepts, they were
+# applied to the main CodeSync Part 1 implementation below.
 # ============================================================
 
 import requests
