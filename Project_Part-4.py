@@ -7,10 +7,7 @@ from requests.exceptions import HTTPError
 from dotenv import load_dotenv
 
 
-# ============================================================
 # CODESYNC — ENVIRONMENT VARIABLE CONFIGURATION
-# ============================================================
-#
 # WHY ARE WE USING A .env FILE?
 #
 # In the earlier version of CodeSync, the GitHub token was
@@ -76,8 +73,6 @@ from dotenv import load_dotenv
 # load_dotenv() normally searches for a .env file starting
 # from the script's directory context and nearby directories.
 # Keep .env in the CodeSync project folder for this project.
-#
-# ============================================================
 
 
 # Load environment variables from the local .env file.
@@ -90,11 +85,8 @@ from dotenv import load_dotenv
 # take precedence over the value in .env.
 load_dotenv()
 
-
-# ============================================================
 # CODESYNC — PART 3: SOLUTION FILE PREPARATION
-# ============================================================
-#
+
 # Goal:
 # Prepare the GitHub destination path for a LeetCode solution.
 #
@@ -110,8 +102,7 @@ load_dotenv()
 #
 # Part 3 determines WHERE the solution should be stored
 # inside the GitHub repository.
-#
-# ============================================================
+
 
 
 def get_file_info(problem_name, language):
@@ -163,10 +154,8 @@ def get_file_info(problem_name, language):
     return filename, github_path
 
 
-# ============================================================
 # PART 4: GITHUB FILE UPLOAD
-# ============================================================
-#
+
 # Part 3 decides WHERE the solution goes.
 # Part 4 handles HOW the solution is uploaded.
 #
@@ -180,8 +169,7 @@ def get_file_info(problem_name, language):
 #     Send message + Base64 content + existing file SHA.
 #
 # GitHub requires the SHA when updating an existing file.
-#
-# ============================================================
+
 
 
 def upload_file_to_github(
@@ -192,9 +180,8 @@ def upload_file_to_github(
     commit_msg
 ):
 
-    # --------------------------------------------------------
+
     # GITHUB TOKEN CONFIGURATION — USING .env
-    # --------------------------------------------------------
     #
     # OLD APPROACH:
     #
@@ -223,7 +210,6 @@ def upload_file_to_github(
     # A .env file is plain text, not an encrypted vault.
     # Its safety depends on keeping the file private and
     # preventing it from being committed to Git.
-    # --------------------------------------------------------
 
     token = os.getenv("GITHUB_TOKEN")
 
@@ -273,16 +259,14 @@ def upload_file_to_github(
 
     try:
 
-        # ----------------------------------------------------
+
         # CHECK WHETHER THE DESTINATION FILE ALREADY EXISTS
-        # ----------------------------------------------------
-        #
+
         # HTTP 200: File exists; response includes its SHA.
         # HTTP 404: File does not exist; create a new file.
         #
         # GitHub requires the existing file's SHA when using
         # PUT to update that file.
-        # ----------------------------------------------------
 
         existing_file_response = requests.get(
             url,
@@ -313,9 +297,7 @@ def upload_file_to_github(
             # such as authentication or permission errors.
             existing_file_response.raise_for_status()
 
-        # ----------------------------------------------------
         # UPLOAD OR UPDATE THE FILE
-        # ----------------------------------------------------
 
         print("\nUploading file to GitHub...")
 
@@ -362,9 +344,7 @@ def upload_file_to_github(
         print(f"\nAn unexpected error occurred: {err}")
         return
 
-    # --------------------------------------------------------
     # DISPLAY THE SUCCESSFUL RESPONSE
-    # --------------------------------------------------------
 
     try:
 
@@ -382,10 +362,8 @@ def upload_file_to_github(
         )
 
 
-# ============================================================
 # MAIN PROGRAM
-# ============================================================
-#
+
 # The main program connects Part 3 and Part 4.
 #
 # Local solution file
@@ -401,8 +379,6 @@ def upload_file_to_github(
 #       |
 #       v
 # Create or update through GitHub API
-#
-# ============================================================
 
 
 if __name__ == "__main__":
@@ -420,9 +396,8 @@ if __name__ == "__main__":
         "Enter Programming Language: "
     ).strip()
 
-    # --------------------------------------------------------
+
     # PART 3: PREPARE THE GITHUB DESTINATION PATH
-    # --------------------------------------------------------
 
     file_info = get_file_info(problem_name, language)
 
