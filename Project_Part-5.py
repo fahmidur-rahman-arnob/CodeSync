@@ -254,37 +254,6 @@ def upload_file_to_github(
             timeout=30
         )
 
-        # FILE EXISTS
-
-        # if existing_file_response.status_code == 200:
-
-        #     # Convert GitHub's JSON response into a Python dict.
-        #     existing_file_data = existing_file_response.json()
-
-        #     # GitHub requires the current file SHA when
-        #     # updating an existing file.
-        #     payload["sha"] = existing_file_data["sha"]
-
-        #     print(
-        #         "Existing file found. "
-        #         "It will be updated."
-        #     )
-
-        #Debugging code
-        # if existing_file_response.status_code == 200:
-        #     existing_file_data = existing_file_response.json()
-        #     payload["sha"] = existing_file_data["sha"]
-
-        #     github_encoded_content = existing_file_data["content"].replace("\n", "")
-        #     github_content = base64.b64decode(
-        #         github_encoded_content
-        #     ).decode("utf-8")
-
-        #     print("Existing file found. It will be updated.")
-        #     print("GitHub existing content length:", len(github_content))
-        #     print("GitHub existing content preview:", repr(github_content[:200]))
-        #     print("Local content matches GitHub:", file_content == github_content)
-
         #Content Comparison and debugging 
         if existing_file_response.status_code == 200:
             existing_file_data = existing_file_response.json()
